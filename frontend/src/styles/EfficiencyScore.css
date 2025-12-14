@@ -1,0 +1,294 @@
+.efficiency-container {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.efficiency-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 32px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Score Circle */
+.score-circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 32px 0;
+    gap: 24px;
+}
+
+.score-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.score-inner {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-value {
+    font-size: 56px;
+    font-weight: 800;
+    color: #2c3e50;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 14px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+}
+
+.grade-badge {
+    padding: 16px 32px;
+    border-radius: 50px;
+    color: white;
+    font-size: 32px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.5s ease-out;
+}
+
+.grade-emoji {
+    font-size: 32px;
+}
+
+.grade-text {
+    font-size: 28px;
+}
+
+/* Comparison Box */
+.comparison-box {
+    background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+    color: white;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 24px 0;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.comparison-text {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+
+.comparison-detail {
+    font-size: 16px;
+    margin: 0;
+    opacity: 0.95;
+}
+
+.comparison-detail strong {
+    font-weight: 700;
+}
+
+/* Tips Section */
+.tips-section {
+    margin: 32px 0;
+}
+
+.tips-section h3 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tip-item {
+    background: #f3f4f6;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid #3B82F6;
+    font-size: 15px;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.tip-item:hover {
+    background: #e5e7eb;
+    transform: translateX(4px);
+}
+
+/* Historical Trend */
+.historical-section {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.historical-section h3 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.trend-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 150px;
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 16px;
+    gap: 4px;
+}
+
+.trend-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.trend-bar {
+    width: 100%;
+    max-width: 60px;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.3s ease;
+    min-height: 10px;
+}
+
+.trend-bar:hover {
+    opacity: 0.8;
+    transform: scaleY(1.05);
+}
+
+.trend-label {
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #3B82F6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: #EF4444;
+    font-size: 16px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .efficiency-container {
+        padding: 20px;
+    }
+
+    .efficiency-container h2 {
+        font-size: 22px;
+    }
+
+    .score-circle {
+        width: 160px;
+        height: 160px;
+    }
+
+    .score-inner {
+        width: 140px;
+        height: 140px;
+    }
+
+    .score-value {
+        font-size: 44px;
+    }
+
+    .grade-badge {
+        padding: 12px 24px;
+        font-size: 24px;
+    }
+
+    .comparison-text {
+        font-size: 20px;
+    }
+
+    .comparison-detail {
+        font-size: 14px;
+    }
+
+    .trend-chart {
+        height: 120px;
+    }
+}

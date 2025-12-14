@@ -1,0 +1,7 @@
+numpy
+paho-mqtt
+pandas
+pytest
+faker
+jsonschema
+requests

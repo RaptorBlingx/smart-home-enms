@@ -1,0 +1,71 @@
+﻿[
+    {
+        "id": "broker1",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "tab1",
+        "type": "tab",
+        "label": "Energy Pipeline"
+    },
+    {
+        "id": "n1",
+        "type": "mqtt in",
+        "z": "tab1",
+        "name": "MQTT Subscriber",
+        "topic": "smart_home/energy",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "broker1",
+        "x": 140,
+        "y": 100,
+        "wires": [["n2", "n3"]]
+    },
+    {
+        "id": "n2",
+        "type": "debug",
+        "z": "tab1",
+        "name": "Debug MQTT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "complete": "payload",
+        "x": 340,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "n3",
+        "type": "http request",
+        "z": "tab1",
+        "name": "POST to Backend",
+        "method": "POST",
+        "ret": "obj",
+        "url": "http://backend:8000/api/energy/consumption",
+        "headers": [{"keyValue":"Content-Type","valueValue":"application/json"}],
+        "x": 360,
+        "y": 120,
+        "wires": [["n4"]]
+    },
+    {
+        "id": "n4",
+        "type": "debug",
+        "z": "tab1",
+        "name": "Debug API Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "complete": "payload",
+        "x": 580,
+        "y": 120,
+        "wires": []
+    }
+]

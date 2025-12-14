@@ -1,0 +1,904 @@
+/* ===========================
+   Premium Smart Recommendations Styles
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.recommendations-container-premium {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    padding: 32px;
+}
+
+/* ===========================
+   Premium Hero Section
+   =========================== */
+
+.recommendations-hero {
+    background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+    border-radius: 24px;
+    padding: 48px 40px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.recommendations-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="50" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.5;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: white;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px 32px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ===========================
+   Premium Peak Hours Grid
+   =========================== */
+
+.peak-hours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.peak-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.peak-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--peak-color) 0%, transparent 100%);
+}
+
+.peak-card-danger {
+    --peak-color: #EF4444;
+}
+
+.peak-card-success {
+    --peak-color: #10B981;
+}
+
+.peak-card-info {
+    --peak-color: #3B82F6;
+}
+
+.peak-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+.peak-card-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.peak-card-danger .peak-card-icon {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+}
+
+.peak-card-info .peak-card-icon {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+}
+
+.peak-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.peak-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+}
+
+.peak-hours-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.hour-badge {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+}
+
+.hour-badge-red {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.hour-badge-green {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.hour-more {
+    font-size: 12px;
+    color: #6B7280;
+    font-weight: 600;
+    padding: 4px 8px;
+    background: #F3F4F6;
+    border-radius: 6px;
+}
+
+.peak-card-desc {
+    font-size: 14px;
+    color: #6B7280;
+    margin: 0;
+    font-weight: 500;
+}
+
+.savings-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.amount-value {
+    font-size: 36px;
+    font-weight: 900;
+    color: #1F2937;
+    line-height: 1;
+}
+
+.amount-period {
+    font-size: 16px;
+    color: #6B7280;
+    font-weight: 600;
+}
+
+.peak-progress {
+    height: 8px;
+    background: #F3F4F6;
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.peak-progress-bar {
+    height: 100%;
+    border-radius: 50px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.peak-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+}
+
+.peak-bar-red {
+    background: linear-gradient(90deg, #EF4444 0%, #DC2626 100%);
+}
+
+.peak-bar-green {
+    background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+}
+
+.peak-bar-blue {
+    background: linear-gradient(90deg, #3B82F6 0%, #1E40AF 100%);
+}
+
+/* ===========================
+   No Recommendations State
+   =========================== */
+
+.no-recommendations-premium {
+    background: white;
+    border-radius: 24px;
+    padding: 80px 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    margin-bottom: 32px;
+}
+
+.no-rec-icon-wrapper {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #DCFCE7 0%, #D1FAE5 100%);
+    border-radius: 50%;
+    animation: pulse 3s infinite;
+}
+
+.no-rec-icon {
+    font-size: 64px;
+}
+
+.no-recommendations-premium h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1F2937;
+    margin: 0 0 12px 0;
+}
+
+.no-recommendations-premium p {
+    font-size: 16px;
+    color: #6B7280;
+    margin: 8px 0;
+    font-weight: 500;
+}
+
+.no-recommendations-premium .no-rec-detail {
+    font-size: 14px;
+    color: #9CA3AF;
+}
+
+/* ===========================
+   Premium Recommendations Section
+   =========================== */
+
+.recommendations-section {
+    margin-bottom: 32px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.section-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+}
+
+.rec-count {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    color: #92400E;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+}
+
+.recommendation-card-premium {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.recommendation-card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--priority-color) 0%, transparent 100%);
+}
+
+.recommendation-card-premium.priority-high {
+    --priority-color: #EF4444;
+}
+
+.recommendation-card-premium.priority-medium {
+    --priority-color: #F59E0B;
+}
+
+.recommendation-card-premium.priority-low {
+    --priority-color: #10B981;
+}
+
+.recommendation-card-premium:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.dismiss-btn-premium {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(239, 68, 68, 0.1);
+    border: none;
+    color: #EF4444;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.dismiss-btn-premium:hover {
+    background: #EF4444;
+    color: white;
+    transform: scale(1.1);
+}
+
+.rec-card-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.rec-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.rec-icon-emoji {
+    font-size: 28px;
+}
+
+.rec-header-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.rec-priority-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.rec-title-premium {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.rec-device-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+    border-radius: 50px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.device-icon {
+    font-size: 16px;
+}
+
+.rec-message-premium {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4B5563;
+    margin: 0 0 20px 0;
+    font-weight: 500;
+}
+
+.rec-action-box {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    border-left: 4px solid #10B981;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.action-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.action-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #047857;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.action-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #065F46;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.rec-footer-premium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 2px solid #F3F4F6;
+}
+
+.rec-savings-premium {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #059669;
+}
+
+.savings-icon {
+    font-size: 18px;
+}
+
+.rec-impact-badge {
+    padding: 6px 14px;
+    border: 2px solid;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===========================
+   Premium Heat Map Section
+   =========================== */
+
+.heatmap-section-premium {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+.heatmap-section-premium .section-header {
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #F3F4F6;
+}
+
+.heatmap-legend-inline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legend-label {
+    font-size: 13px;
+    color: #6B7280;
+    font-weight: 600;
+}
+
+.legend-bar-inline {
+    width: 150px;
+    height: 8px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #10B981 0%, #FBBF24 50%, #EF4444 100%);
+}
+
+.heatmap-premium {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.heatmap-cell-premium {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    border: 2px solid;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+}
+
+.heatmap-cell-premium:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.heatmap-cell-premium.cell-peak {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3);
+}
+
+.heatmap-cell-premium.cell-offpeak {
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+}
+
+.heatmap-hour-premium {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+.heatmap-value-premium {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6B7280;
+}
+
+.peak-indicator,
+.offpeak-indicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 14px;
+    animation: pulse 2s infinite;
+}
+
+.heatmap-insights {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 20px;
+    background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+    border-radius: 12px;
+}
+
+.insight-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.insight-icon {
+    font-size: 18px;
+}
+
+/* ===========================
+   Loading & Error States
+   =========================== */
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 20px;
+}
+
+.spinner {
+    border: 4px solid rgba(16, 185, 129, 0.1);
+    border-top: 4px solid #10B981;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+.loading-spinner p {
+    font-size: 16px;
+    color: #6B7280;
+    font-weight: 500;
+}
+
+/* ===========================
+   Animations
+   =========================== */
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+
+@media (max-width: 1200px) {
+    .peak-hours-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .heatmap-premium {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .recommendations-container-premium {
+        padding: 20px;
+    }
+
+    .recommendations-hero {
+        padding: 32px 24px;
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-stats {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .hero-stat {
+        padding: 16px 24px;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .peak-hours-grid {
+        gap: 16px;
+    }
+
+    .peak-card {
+        padding: 24px;
+    }
+
+    .peak-card-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 28px;
+    }
+
+    .recommendations-grid {
+        gap: 20px;
+    }
+
+    .recommendation-card-premium {
+        padding: 24px;
+    }
+
+    .rec-card-header {
+        gap: 12px;
+    }
+
+    .rec-icon-wrapper {
+        width: 48px;
+        height: 48px;
+    }
+
+    .rec-icon-emoji {
+        font-size: 24px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .heatmap-premium {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .heatmap-cell-premium {
+        padding: 6px;
+    }
+
+    .heatmap-hour-premium {
+        font-size: 11px;
+    }
+
+    .heatmap-value-premium {
+        font-size: 10px;
+    }
+
+    .heatmap-insights {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .recommendations-container-premium {
+        padding: 16px;
+    }
+
+    .recommendations-hero {
+        padding: 24px 20px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-stats {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .hero-stat {
+        padding: 12px 20px;
+    }
+
+    .peak-card {
+        padding: 20px;
+    }
+
+    .recommendation-card-premium {
+        padding: 20px;
+    }
+
+    .rec-action-box {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .rec-footer-premium {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .heatmap-premium {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -1,0 +1,314 @@
+.recommendations-container {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recommendations-container h2 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+/* Peak Hours Summary */
+.peak-hours-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.peak-hours-card {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.peak-hours-card.off-peak {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.peak-hours-card.savings {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+}
+
+.peak-hours-card h3 {
+    font-size: 16px;
+    margin: 0 0 12px 0;
+    opacity: 0.95;
+}
+
+.hours-list {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.hours-detail {
+    font-size: 13px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Recommendations List */
+.recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.recommendation-card {
+    background: #f9fafb;
+    border-left: 4px solid #3B82F6;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rec-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.rec-priority {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.dismiss-btn {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+}
+
+.dismiss-btn:hover {
+    color: #ef4444;
+    transform: scale(1.1);
+}
+
+.rec-title {
+    color: #1f2937;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+}
+
+.rec-device {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.rec-message {
+    color: #374151;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 12px 0;
+}
+
+.rec-action {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 3px solid #3B82F6;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.rec-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.rec-savings {
+    color: #10B981;
+    font-size: 14px;
+}
+
+.rec-impact {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* No Recommendations */
+.no-recommendations {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 12px;
+}
+
+.no-rec-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.no-recommendations p {
+    color: #2c3e50;
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.no-rec-detail {
+    color: #6b7280 !important;
+    font-size: 14px !important;
+}
+
+/* Heat Map */
+.heatmap-section {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.heatmap-section h3 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.heatmap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.heatmap-cell {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.heatmap-hour {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.heatmap-value {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.heatmap-legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.legend-bar {
+    width: 200px;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #34D399 0%, #FBBF24 50%, #EF4444 100%);
+}
+
+/* Loading */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #3B82F6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recommendations-container {
+        padding: 20px;
+    }
+
+    .recommendations-container h2 {
+        font-size: 22px;
+    }
+
+    .peak-hours-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .heatmap {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 4px;
+    }
+
+    .heatmap-cell {
+        font-size: 12px;
+    }
+
+    .heatmap-hour {
+        font-size: 10px;
+    }
+
+    .heatmap-value {
+        font-size: 11px;
+    }
+
+    .rec-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
