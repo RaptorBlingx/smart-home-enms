@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Use relative URL for API calls - works on any server
-const API_BASE_URL = process.env.REACT_APP_API_URL || window.location.protocol + '//' + window.location.hostname + ':8000';
+// Use relative URL for API calls - proxied through nginx
+const API_BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
 export const getEnergyData = async () => {
     try {
