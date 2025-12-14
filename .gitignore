@@ -20,10 +20,11 @@ yarn-error.log*
 build/
 .DS_Store
 
-# Environment
-.env
+# Environment (KEEP .env for zero-touch deployment)
+# .env is included in repo with safe defaults
 .env.local
 .env.*.local
+.env.production
 
 # IDE
 .vscode/

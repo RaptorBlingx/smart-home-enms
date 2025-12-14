@@ -59,7 +59,7 @@ A comprehensive IoT-based energy management system for smart homes with real-tim
                              └──────────────┘
 ```
 
-## 🚀 Quick Start (Zero-Touch Deployment)
+## 🚀 Quick Start (True Zero-Touch Deployment)
 
 ### Prerequisites
 
@@ -68,35 +68,43 @@ A comprehensive IoT-based energy management system for smart homes with real-tim
 - **8GB RAM** recommended
 - **Ports available**: 3002, 8000, 5432, 1883, 1880, 3001
 
-### Installation (2 Commands)
+### Installation (3 Commands Only!)
 
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd smart-home-energy-management
-   ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/RaptorBlingx/smart-home-enms.git
+cd smart-home-enms
 
-2. **Start all services** (No configuration needed!)
-   ```bash
-   docker-compose up -d
-   ```
+# 2. Start all services (No configuration needed!)
+docker-compose up -d
 
-   That's it! All services will start automatically with sensible defaults. ✨
+# 3. Wait 30 seconds for services to initialize, then access:
+```
 
-3. **Access the applications**
-   - **Frontend (Premium UI)**: http://localhost:3002
-   - **Backend API**: http://localhost:8000
-   - **API Docs (Swagger)**: http://localhost:8000/docs
-   - **Grafana**: http://localhost:3001 (admin/admin)
-   - **Node-RED**: http://localhost:1880
+**That's it!** 🎉 Everything is pre-configured and ready to use.
 
-### First-Time Experience
+### Access Your Smart Home System
 
-- ⚡ Simulator starts generating device data immediately
-- 📊 Dashboard populates with real-time consumption data
-- 🤖 ML model trains automatically in background
-- 🎨 Premium UI loads with EcoTech Green theme
-- 🔄 All services auto-restart on failure
+Open these URLs in your browser (no login required):
+
+- **🎨 Frontend Dashboard**: http://localhost:3002
+- **📊 API Documentation**: http://localhost:8000/docs
+- **📈 Grafana Dashboards**: http://localhost:3001 (auto-login enabled)
+- **🔄 Node-RED Flows**: http://localhost:1880
+- **🔌 Backend Health**: http://localhost:8000
+
+### What Happens Automatically
+
+- ✅ PostgreSQL database initializes with schema
+- ✅ Simulator generates realistic device data (every 10s)
+- ✅ MQTT broker starts receiving messages
+- ✅ Node-RED flows activate and process data
+- ✅ ML models train in background
+- ✅ Grafana dashboards provision automatically
+- ✅ Premium UI loads with live data
+- ✅ All services restart on failure
+
+**No configuration files to copy. No credentials to remember. No dashboards to import. Just run and go!** 🚀
 
 ## 📊 Services Overview
 
@@ -277,22 +285,26 @@ docker compose up -d frontend
 
 ## 📝 Environment Variables
 
-Create `.env` file in root directory:
+**No configuration needed!** The `.env` file is included in the repository with safe defaults for local development.
+
+All environment variables are pre-configured:
 
 ```env
-# Database
+# Database - Uses Docker service name
 DATABASE_URL=postgresql://user:password@postgres:5432/smart_home
 
-# Security
-SECRET_KEY=your_secret_key_change_in_production
+# Security - Change only for production deployment
+SECRET_KEY=smart-home-secret-key-change-in-production
 
-# CORS
-ALLOW_ORIGINS=http://localhost:3002,http://frontend:3002
+# CORS - Pre-configured for all ports
+ALLOW_ORIGINS=http://localhost:3002,http://localhost:3000,http://frontend:3000
 
-# MQTT
+# MQTT - Uses Docker service name
 MQTT_BROKER_URL=mqtt://mosquitto:1883
 MQTT_TOPIC=smart_home/energy
 ```
+
+**For production:** Copy `.env` to `.env.production` and update sensitive values.
 
 ## 🎓 Graduation Project Notes
 
