@@ -16,7 +16,7 @@ app = FastAPI(title="Smart Home Energy Management System")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.origins_list,
-    allow_credentials=True,
+    allow_credentials=False if '*' in settings.origins_list else True,
     allow_methods=["*"],
     allow_headers=["*"],
 )

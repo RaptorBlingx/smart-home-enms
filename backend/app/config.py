@@ -14,6 +14,9 @@ class Settings(BaseSettings):
 
     @property
     def origins_list(self) -> List[str]:
+        # Support wildcard for zero-touch deployment on any server
+        if self.ALLOW_ORIGINS.strip() == '*':
+            return ['*']
         return [origin.strip() for origin in self.ALLOW_ORIGINS.split(',')]
 
     class Config:
