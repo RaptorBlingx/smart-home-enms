@@ -22,10 +22,10 @@ const App = () => {
                         <Link to="/efficiency">Efficiency</Link>
                         <Link to="/recommendations">Tips</Link>
                         <Link to="/control">Devices</Link>
-                        <a href="http://localhost:1880" target="_blank" rel="noopener noreferrer" className="external-link">
+                        <a href={`${window.location.protocol}//${window.location.hostname}:1880`} target="_blank" rel="noopener noreferrer" className="external-link">
                             Node-RED 🔗
                         </a>
-                        <a href="http://localhost:3001" target="_blank" rel="noopener noreferrer" className="external-link">
+                        <a href={`${window.location.protocol}//${window.location.hostname}:3001`} target="_blank" rel="noopener noreferrer" className="external-link">
                             Grafana 🔗
                         </a>
                     </div>
