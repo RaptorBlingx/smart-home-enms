@@ -348,6 +348,19 @@ This project demonstrates:
    - 7 Docker containers orchestrated seamlessly
    - 1000+ lines of premium CSS with advanced animations
    - 15+ API endpoints with full documentation
+
+## 📚 Documentation
+
+- **[EXPLINATION.md](EXPLINATION.md)** - 🎓 Complete project explanation for graduation presentations
+  - Written in simple, friendly English for easy understanding
+  - Includes analogies and real-world examples
+  - Step-by-step demo script for professor presentations (15 minutes)
+  - 11 Q&A entries covering common technical questions
+  - System architecture explained with clear diagrams
+  - "How to present with confidence" guide
+  - Perfect for students preparing their graduation project defense
+
+**💡 New to the project?** Start with [EXPLINATION.md](EXPLINATION.md) for a complete understanding!
    - 5 simulated devices with realistic patterns
    - Zero configuration required for deployment
 
