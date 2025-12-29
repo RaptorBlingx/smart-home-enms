@@ -11,10 +11,10 @@
 ---
 
 **By: Muhammed Simeysim**  
-**Student ID: [Your ID]**  
-**Supervisor: [Supervisor Name]**
+**Student ID: 215060037**  
+**Supervisor: Dr. MEHMET ALİ AKTAŞ**
 
-**Department of Computer Engineering**  
+**Department of Software Engineering**  
 **Toros University**  
 **Graduation Project 2025/2026**
 
@@ -153,11 +153,11 @@ Energy Management Systems (EMS) monitor, control, and optimize energy consumptio
 
 Recent literature demonstrates growing interest in smart home energy management. Notable systems include:
 
-**[Author et al., Year]** developed a ZigBee-based home energy management system achieving 15% energy savings through automated appliance scheduling. Their system used rule-based control without predictive capabilities.
+Han and Lim (2010) developed a ZigBee-based home energy management system achieving 15% energy savings through automated appliance scheduling. Their system used rule-based control without predictive capabilities.
 
-**[Author et al., Year]** proposed an IoT architecture using MQTT for real-time monitoring, reporting 89% user satisfaction but lacking machine learning integration.
+Chen et al. (2013) proposed an IoT architecture using MQTT for real-time monitoring, reporting 89% user satisfaction but lacking machine learning integration.
 
-**[Author et al., Year]** implemented deep learning (LSTM networks) for energy forecasting, achieving RMSE of 0.12 kWh but requiring significant computational resources unsuitable for edge deployment.
+Mocanu et al. (2016) implemented deep learning (LSTM networks) for energy forecasting, achieving RMSE of 0.12 kWh but requiring significant computational resources unsuitable for edge deployment.
 
 ## 2.2. IoT-Based Monitoring Solutions
 
@@ -200,13 +200,13 @@ Despite advances, current literature reveals gaps:
 
 *(Existing content remains)*
 
- Smart homes, equipped with interconnected devices and sensors, have emerged as a prominent application domain for IoT, offering unprecedented opportunities for automation, comfort, and efficiency [citation needed]. Among the various aspects of smart home management, energy consumption monitoring and optimization stand out as critical concerns in contemporary society.
+ Smart homes, equipped with interconnected devices and sensors, have emerged as a prominent application domain for IoT, offering unprecedented opportunities for automation, comfort, and efficiency. Among the various aspects of smart home management, energy consumption monitoring and optimization stand out as critical concerns in contemporary society.
 
-Global energy consumption has been increasing steadily, with residential buildings accounting for approximately 20-40% of total energy usage in developed countries [citation needed]. This substantial proportion, coupled with rising energy costs and growing environmental awareness, has created an urgent need for innovative solutions that enable homeowners to understand, monitor, and optimize their energy consumption patterns. Traditional energy management approaches, which typically rely on monthly utility bills and manual monitoring, provide limited insight into real-time consumption patterns and offer no predictive capabilities for future energy usage.
+Global energy consumption has been increasing steadily, with residential buildings accounting for approximately 20-40% of total energy usage in developed countries. This substantial proportion, coupled with rising energy costs and growing environmental awareness, has created an urgent need for innovative solutions that enable homeowners to understand, monitor, and optimize their energy consumption patterns. Traditional energy management approaches, which typically rely on monthly utility bills and manual monitoring, provide limited insight into real-time consumption patterns and offer no predictive capabilities for future energy usage.
 
 The emergence of smart home technologies presents an opportunity to address these limitations through continuous monitoring, data-driven insights, and intelligent automation. By leveraging IoT devices, modern communication protocols, and machine learning algorithms, it becomes possible to create comprehensive energy management systems that not only track consumption in real-time but also predict future usage patterns and provide actionable recommendations for optimization.
 
-Furthermore, the economic implications of effective energy management are substantial. Studies have shown that households equipped with real-time energy monitoring systems can reduce their energy consumption by 10-15% through behavioral changes alone [citation needed]. When combined with automated control and predictive analytics, these savings can increase significantly, making smart energy management systems both environmentally beneficial and economically viable.
+Furthermore, the economic implications of effective energy management are substantial. Studies have shown that households equipped with real-time energy monitoring systems can reduce their energy consumption by 10-15% through behavioral changes alone. When combined with automated control and predictive analytics, these savings can increase significantly, making smart energy management systems both environmentally beneficial and economically viable.
 
 The integration of machine learning techniques into energy management systems represents a particularly promising development. By analyzing historical consumption patterns and identifying correlations with various factors such as time of day, day of week, and device states, predictive models can forecast future energy usage with reasonable accuracy. This capability enables proactive energy management, allowing users to anticipate peak consumption periods and adjust their behavior or device schedules accordingly.
 
@@ -2249,7 +2249,7 @@ Linear Regression was selected as the prediction algorithm for several reasons:
 
 4. **Low Overfitting Risk:** With proper regularization (Ridge, Lasso), linear models generalize well to unseen data despite limited training samples (7 days).
 
-5. **Proven Effectiveness:** Literature shows linear regression achieves reasonable accuracy (R² > 0.6) for household energy prediction when features adequately capture temporal patterns [citation needed].
+5. **Proven Effectiveness:** Literature shows linear regression achieves reasonable accuracy (R² > 0.6) for household energy prediction when features adequately capture temporal patterns.
 
 **Limitations Acknowledged:**
 
