@@ -10,13 +10,13 @@
 
 ---
 
-**By: [Your Name]**  
+**By: Muhammed Simeysim**  
 **Student ID: [Your ID]**  
 **Supervisor: [Supervisor Name]**
 
 **Department of Computer Engineering**  
-**[University Name]**  
-**[Month, Year]**
+**Toros University**  
+**Graduation Project 2025/2026**
 
 ---
 
