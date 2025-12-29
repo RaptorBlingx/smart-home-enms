@@ -440,3 +440,40 @@ tr:hover {
 .button:hover {
     background: #2c3e50;
 }
+
+/* Footer Styles */
+.app-footer {
+  background: linear-gradient(135deg, #047857 0%, #10B981 100%);
+  color: white;
+  padding: 30px 40px;
+  margin-top: 50px;
+  box-shadow: 0 -4px 12px rgba(4, 120, 87, 0.3);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.project-info h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.project-info .student-name {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 8px 0;
+  color: #D1FAE5;
+}
+
+.project-info .university {
+  font-size: 16px;
+  font-weight: 400;
+  color: #A7F3D0;
+  margin: 8px 0;
+}

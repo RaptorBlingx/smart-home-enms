@@ -522,6 +522,149 @@ async def get_device_predictions(
     
     return result
 
+@router.get("/ml/models")
+async def get_all_models(db: Session = Depends(get_db)):
+    """
+    Get information about all trained ML models
+    
+    Returns:
+        List of models with their metrics and metadata
+    """
+    from services.ml_service import MLService
+    import os
+    import joblib
+    
+    ml_service = MLService(db)
+    models_info = []
+    
+    # Get list of devices
+    result = db.execute(text("SELECT DISTINCT name FROM devices"))
+    devices = [row[0] for row in result.fetchall()]
+    
+    for device_name in devices:
+        metadata_path = os.path.join(ml_service.model_dir, f"{device_name}_metadata.pkl")
+        
+        if os.path.exists(metadata_path):
+            try:
+                metadata = joblib.load(metadata_path)
+                
+                # Convert numpy types to Python types
+                training_start = metadata.get('training_start_time')
+                training_date = training_start.isoformat() if training_start else None
+                
+                # Get algorithm name and metrics
+                algorithm = metadata.get('algorithm', 'Linear Regression')
+                test_r2 = float(metadata.get('test_r2_score', metadata.get('r2_score', 0)))
+                train_r2 = float(metadata.get('train_r2_score', test_r2))
+                test_mae = float(metadata.get('test_mae', 0))
+                feature_names = metadata.get('feature_names', [])
+                
+                models_info.append({
+                    "device_name": device_name,
+                    "algorithm": algorithm,
+                    "train_r2_score": train_r2,
+                    "test_r2_score": test_r2,
+                    "test_mae": test_mae,
+                    "training_samples": int(metadata.get('training_samples', 0)),
+                    "test_samples": int(metadata.get('test_samples', 0)),
+                    "training_date": training_date,
+                    "use_simple_model": bool(metadata.get('use_simple_model', False)),
+                    "features_count": len(feature_names),
+                    "top_features": list(metadata.get('feature_importance', {}).keys())[:5] if metadata.get('feature_importance') else []
+                })
+            except Exception as e:
+                print(f"Error loading model metadata for {device_name}: {e}")
+                continue
+    
+    return {
+        "success": True,
+        "models": models_info,
+        "total_models": len(models_info)
+    }
+
+@router.get("/ml/device/{device_name}/model-info")
+async def get_device_model_info(device_name: str, db: Session = Depends(get_db)):
+    """
+    Get detailed model information for a specific device
+    
+    Args:
+        device_name: Name of the device
+    
+    Returns:
+        Detailed model metrics and information
+    """
+    from services.ml_service import MLService
+    import os
+    import joblib
+    
+    ml_service = MLService(db)
+    metadata_path = os.path.join(ml_service.model_dir, f"{device_name}_metadata.pkl")
+    
+    if not os.path.exists(metadata_path):
+        raise HTTPException(status_code=404, detail=f"No trained model found for {device_name}")
+    
+    try:
+        metadata = joblib.load(metadata_path)
+        
+        # Convert numpy types to Python types
+        algorithm = metadata.get('algorithm', 'Linear Regression')
+        train_r2 = float(metadata.get('train_r2_score', metadata.get('r2_score', 0)))
+        test_r2 = float(metadata.get('test_r2_score', train_r2))
+        test_mae = float(metadata.get('test_mae', 0))
+        training_start = metadata.get('training_start_time')
+        training_date = training_start.isoformat() if training_start else None
+        feature_names = metadata.get('feature_names', [])
+        feature_importance = metadata.get('feature_importance', {})
+        
+        return {
+            "success": True,
+            "device_name": device_name,
+            "algorithm": f"{algorithm} (scikit-learn)",
+            "model_type": "Simple Averaging Fallback" if bool(metadata.get('use_simple_model')) else "Advanced ML Model",
+            "metrics": {
+                "train_r2_score": round(train_r2, 4),
+                "test_r2_score": round(test_r2, 4),
+                "test_mae": round(test_mae, 4),
+                "r2_interpretation": get_r2_interpretation(test_r2),
+                "performance": "Using hourly averages due to low R²" if bool(metadata.get('use_simple_model')) else "Using ML predictions"
+            },
+            "training_info": {
+                "training_samples": int(metadata.get('training_samples', 0)),
+                "test_samples": int(metadata.get('test_samples', 0)),
+                "training_date": training_date,
+                "total_features": len(feature_names),
+                "features_used": feature_names[:10] if len(feature_names) > 10 else feature_names
+            },
+            "feature_importance": {
+                "top_5_features": dict(list(feature_importance.items())[:5]) if feature_importance else None,
+                "description": "Features ranked by importance in prediction"
+            },
+            "advanced_features": {
+                "lag_features": "Previous consumption (1h, 2h, 24h ago)",
+                "rolling_averages": "Smoothed patterns (3h, 6h, 24h windows)",
+                "time_encoding": "Cyclical hour and day encoding",
+                "statistical": "Rolling std, min, max over 24h window",
+                "interactions": "Combined effects (hour × weekend)"
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error loading model info: {str(e)}")
+
+def get_r2_interpretation(r2_score):
+    """Get human-readable interpretation of R² score"""
+    if r2_score >= 0.9:
+        return "Excellent - Model explains 90%+ of variance"
+    elif r2_score >= 0.7:
+        return "Good - Model explains 70-90% of variance"
+    elif r2_score >= 0.5:
+        return "Moderate - Model explains 50-70% of variance"
+    elif r2_score >= 0.3:
+        return "Fair - Model explains 30-50% of variance (using ML)"
+    elif r2_score >= 0.1:
+        return "Weak - Low predictive power (< 30%)"
+    else:
+        return "Very Poor - Using statistical averaging instead"
+
 
 # ============================================================================
 # EFFICIENCY & RECOMMENDATIONS ENDPOINTS

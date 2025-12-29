@@ -73,10 +73,94 @@ def on_message(client, userdata, msg):
         print(f"❌ Error processing control message: {e}", flush=True)
 
 def simulate_energy_data(client):
+    """
+    Simulate realistic energy consumption with:
+    - Time-of-day variations
+    - Random noise and spikes
+    - Seasonal/weather effects
+    - Human behavior unpredictability
+    """
     while True:
+        current_time = datetime.now()
+        hour = current_time.hour
+        day_of_week = current_time.weekday()
+        is_weekend = day_of_week >= 5
+        
         for device_name, device_info in device_states.items():
             if device_info["status"] == "on":
-                consumption = round(random.uniform(device_info["min"], device_info["max"]), 3)
+                base_min = device_info["min"]
+                base_max = device_info["max"]
+                
+                # Time-of-day multiplier (simulates human behavior)
+                if device_name == "AC":
+                    # AC uses more during hot afternoon hours
+                    if 13 <= hour <= 18:
+                        time_multiplier = random.uniform(1.4, 1.8)  # Peak cooling
+                    elif 19 <= hour <= 23:
+                        time_multiplier = random.uniform(1.1, 1.3)  # Evening
+                    elif 0 <= hour <= 6:
+                        time_multiplier = random.uniform(0.5, 0.7)  # Night (less need)
+                    else:
+                        time_multiplier = random.uniform(0.9, 1.2)  # Morning
+                        
+                elif device_name == "Lights":
+                    # Lights used more at night
+                    if 18 <= hour <= 23 or 0 <= hour <= 6:
+                        time_multiplier = random.uniform(1.5, 2.5)  # Night usage
+                    elif 7 <= hour <= 8:
+                        time_multiplier = random.uniform(1.2, 1.6)  # Morning routine
+                    else:
+                        time_multiplier = random.uniform(0.3, 0.7)  # Day (less need)
+                        
+                elif device_name == "TV":
+                    # TV used more in evening
+                    if 18 <= hour <= 23:
+                        time_multiplier = random.uniform(1.6, 2.2)  # Prime time
+                    elif is_weekend and 10 <= hour <= 16:
+                        time_multiplier = random.uniform(1.3, 1.7)  # Weekend viewing
+                    elif 0 <= hour <= 6:
+                        time_multiplier = random.uniform(0.1, 0.3)  # Night (rarely on)
+                    else:
+                        time_multiplier = random.uniform(0.5, 1.0)  # Other times
+                        
+                elif device_name == "Washing Machine":
+                    # Washing machine used irregularly
+                    if random.random() < 0.15:  # 15% chance running
+                        time_multiplier = random.uniform(1.0, 1.5)
+                    else:
+                        time_multiplier = random.uniform(0.0, 0.1)  # Off most of the time
+                        
+                elif device_name == "Refrigerator":
+                    # Refrigerator constant but varies with door openings
+                    time_multiplier = random.uniform(0.85, 1.15)  # Slight variation
+                    # Occasional compressor cycle spikes
+                    if random.random() < 0.1:  # 10% chance of spike
+                        time_multiplier = random.uniform(1.5, 2.0)
+                else:
+                    time_multiplier = 1.0
+                
+                # Weekend behavior (more home usage)
+                if is_weekend:
+                    weekend_factor = random.uniform(1.05, 1.25)
+                else:
+                    weekend_factor = 1.0
+                
+                # Random noise (human unpredictability, measurement errors)
+                noise_factor = random.gauss(1.0, 0.15)  # Gaussian noise, std=15%
+                noise_factor = max(0.5, min(1.5, noise_factor))  # Clamp to reasonable range
+                
+                # Occasional random spikes (turning on multiple appliances, etc.)
+                if random.random() < 0.05:  # 5% chance of spike
+                    spike_factor = random.uniform(1.3, 2.0)
+                else:
+                    spike_factor = 1.0
+                
+                # Calculate final consumption
+                base_consumption = random.uniform(base_min, base_max)
+                consumption = base_consumption * time_multiplier * weekend_factor * noise_factor * spike_factor
+                
+                # Ensure non-negative and round
+                consumption = max(0.001, round(consumption, 3))
                 
                 data = {
                     "device_name": device_name,
@@ -85,7 +169,7 @@ def simulate_energy_data(client):
                 }
                 
                 client.publish(MQTT_TOPIC, json.dumps(data))
-                print(f"Published: {device_name} = {consumption} kW (ON)")
+                print(f"Published: {device_name} = {consumption} kW (ON, hour={hour})")
             else:
                 print(f"Skipped: {device_name} (OFF)")
         

@@ -8,6 +8,7 @@ import DeviceControl from './components/DeviceControl';
 import Analytics from './components/Analytics';
 import EfficiencyScore from './components/EfficiencyScore';
 import SmartRecommendations from './components/SmartRecommendations';
+import MLPredictions from './components/MLPredictions';
 import './styles/App.css';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
                     <div className="nav-links">
                         <Link to="/">Dashboard</Link>
                         <Link to="/analytics">Analytics</Link>
+                        <Link to="/ml-predictions">ML Predictions</Link>
                         <Link to="/efficiency">Efficiency</Link>
                         <Link to="/recommendations">Tips</Link>
                         <Link to="/control">Devices</Link>
@@ -33,6 +35,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/analytics" element={<Analytics />} />
+                    <Route path="/ml-predictions" element={<MLPredictions />} />
                     <Route path="/efficiency" element={<EfficiencyScore />} />
                     <Route path="/recommendations" element={<SmartRecommendations />} />
                     <Route path="/monitor" element={<EnergyMonitor />} />
@@ -48,6 +51,15 @@ const App = () => {
                     draggable
                     theme="light"
                 />
+                <footer className="app-footer">
+                    <div className="footer-content">
+                        <div className="project-info">
+                            <h3>Graduation Project 2025/2026</h3>
+                            <p className="student-name">Muhammed Simeysim</p>
+                            <p className="university">Toros University</p>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </Router>
     );
